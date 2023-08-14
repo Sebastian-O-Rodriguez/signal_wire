@@ -1,0 +1,22 @@
+version: 1.0.0
+sections:
+  main:
+    - play: say:Welcome to the Signal Wire Coding Challenge, completed by Sebastian Rodriguez!
+    - label: main_menu
+      prompt:
+        play: say:Press 1 for Sales. Press 2 to leave a Voicemail.
+        max_digits: 1
+    - switch:
+        variable: prompt_value
+        case:
+          1:
+            - play: say:Connecting you to Sales.
+            - connect:
+                to: "+12035474523"
+          2:
+            - play: say:Thanks for leaving a voicemail! Record your thoughts after the beep.
+            - record:
+                beep: true
+                end_silence_timeout: 13
+        default:
+            - play: say:You didn't pick an option. Call back to try again!
